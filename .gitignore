@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# vscode settings
+.vscode
+
+# environment settings, keys etc
+environment*.bat
