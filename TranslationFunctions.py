@@ -110,7 +110,24 @@ def getJobStatus(jobId):
     data = res.read()
     print(res.status)
     print()
-    print(data.decode("utf-8"))    
+    print(data.decode("utf-8"))
+
+def getDocumentsStatus(jobId):
+
+    host = env.getDocumentTranslatorHost()
+    parameters = '//translator/text/batch/v1.0/batches/' + jobId + '/documents/'
+    subscriptionKey =  env.getDocumentTranslatorKey()
+    conn = http.client.HTTPSConnection(host)
+    payload = ''
+    headers = {
+    'Ocp-Apim-Subscription-Key': subscriptionKey
+    }
+    conn.request("GET", parameters , payload, headers)
+    res = conn.getresponse()
+    data = res.read()
+    print(res.status)
+    print()
+    print(data.decode("utf-8"))
 
 def getDocumentStatus(jobId, docId):
 

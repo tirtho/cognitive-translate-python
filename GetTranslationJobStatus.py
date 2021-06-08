@@ -21,5 +21,7 @@ if status == False:
     print('JobId not passed')
     needHelp(True)
     exit()
-
 getJobStatus(jobId)
+
+print("### Documents Status ###")
+getDocumentsStatus(jobId)
