@@ -1,0 +1,21 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "myblob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "translation-source/{name}",
+      "connection": "theTriggeringBlob_STORAGE"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "mydoc",
+      "databaseName": "DocumentTranslationDB",
+      "collectionName": "TranslationJob",
+      "createIfNotExists": false,
+      "connectionStringSetting": "theCosmosDB_DOCUMENTDB"
+    }
+  ]
+}

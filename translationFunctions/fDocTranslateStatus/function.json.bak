@@ -1,0 +1,30 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "myblob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "translation-target/{name}",
+      "connection": "theTriggeringBlob_STORAGE"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "myinputdocs",
+      "databaseName": "DocumentTranslationDB",
+      "collectionName": "TranslationJob",
+      "sqlQuery": "SELECT * FROM C WHERE C.targetFilePath = <HERE IS WHERE I NEED THE path FROM THE BLOB TRIGGER ABOVE>",
+      "connectionStringSetting": "theCosmosDB_DOCUMENTDB"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "myoutputdoc",
+      "databaseName": "DocumentTranslationDB",
+      "collectionName": "TranslationJob",
+      "createIfNotExists": false,
+      "connectionStringSetting": "theCosmosDB_DOCUMENTDB"
+    }
+  ]
+}
